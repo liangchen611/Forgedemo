@@ -24,12 +24,16 @@ public class playcontrol_newsys : MonoBehaviour
     private float coyoteTime = 0.1f;
     private float lastgroundtime = -1f;
 
+    //动画器
+    private Animator animator;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -37,6 +41,9 @@ public class playcontrol_newsys : MonoBehaviour
     {
         var keyboard = Keyboard.current;
         float x = 0f;
+
+        animator.SetFloat("speed", Mathf.Abs(moveInput.x));
+        animator.SetBool("isgrounded", isgrounded);
         if (keyboard != null)
         {
             if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed)
