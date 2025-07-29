@@ -42,8 +42,12 @@ public class playcontrol_newsys : MonoBehaviour
         var keyboard = Keyboard.current;
         float x = 0f;
 
-        animator.SetFloat("speed", Mathf.Abs(moveInput.x));
-        animator.SetBool("isgrounded", isgrounded);
+        if (animator != null)
+        {
+            animator.SetFloat("speed", Mathf.Abs(moveInput.x));
+            animator.SetBool("isgrounded", isgrounded);
+        }
+
         if (keyboard != null)
         {
             if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed)
